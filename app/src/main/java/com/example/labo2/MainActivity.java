@@ -9,29 +9,41 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText CajaReceptor;
-
-    private EditText CajaReceptor2;
-    private TextView CajaMuestra;
-
+    EditText text1, text2;
+    TextView lblMensaje;
+    Button boton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CajaReceptor = findViewById(R.id.Username);
-        CajaReceptor2=findViewById(R.id.Password);
-        Button BotonReceptor = findViewById(R.id.Button);
+        inicializar();
 
-        BotonReceptor.setOnClickListener(new View.OnClickListener() {
-
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                CajaMuestra.setText(CajaReceptor.getText().toString());
+                String caja1 = text1.getText().toString();
+                lblMensaje.setText(caja1);
             }
         });
 
 
+        boton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String caja2 = text2.getText().toString();
+                lblMensaje.setText(caja2);
+                return true;
+            }
+        });
+    }
 
+    private void inicializar() {
+
+        text1 = (EditText) findViewById(R.id.Username);
+        text2 = (EditText) findViewById(R.id.Password);
+        lblMensaje = (TextView) findViewById(R.id.Respuesta);
+        boton = (Button) findViewById(R.id.Boton_);
 
     }
 
